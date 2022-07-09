@@ -1,0 +1,17 @@
+{% extends "pontos/base.html" %}
+{% block main %}
+{% if lista_empresas %}
+    <dl>
+        {% for empresa in lista_empresas %}
+        <dt>
+            {{ empresa.nome_empresa }}
+        </dt>
+        <dd>
+           - {{ empresa.cnpj }}
+        </dd>
+            {% endfor %}
+    </dl>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+{% endblock  %}
