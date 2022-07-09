@@ -44,4 +44,3 @@ class RegistroPontos(models.Model):
     def foi_registrado_recente(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.ponto_data <= now
-        #self.pub_date >= timezone.now() - datetime.timedelta(days=1)
