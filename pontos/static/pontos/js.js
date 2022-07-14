@@ -1,11 +1,6 @@
-function requisicao(url){  
-    fetch(url, {
-        method: 'get',
-    }).then(function(result){
-        console.log(result);
-        return result.json()
-    }).then(function(data){
-        let dados ="<dl>";
+function retorna(data){
+    let dados ="<dl>";
+        console.log(data,typeof(data));
         for (const key in data) {
             if (Object.hasOwnProperty.call(data, key)) {
                 console.log(key,data[key]);
@@ -16,6 +11,14 @@ function requisicao(url){
         dados += "</dl>"
         document.getElementById('main').innerHTML = dados;
         console.log(dados);
+}
+function requisicao(url){  
+    fetch(url, {
+        method: 'get',
+    }).then(result => {
+        return result.json()
+    }).then(data => {
+        retorna(data);
     })
 }
 function nav_base(indice=0){
