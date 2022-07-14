@@ -1,5 +1,7 @@
 {% extends "pontos/base.html" %}
+{% load static %}
 {% block main %}
+
 {% if lista_empresas %}
     <dl>
         {% for empresa in lista_empresas %}
@@ -14,4 +16,8 @@
 {% else %}
     <p>Sem empresas cadastradas</p>
 {% endif %}
+    <script src="{% static 'pontos/js.js' %}"></script>
+    <script>
+    nav_base();
+    </script>
 {% endblock  %}
