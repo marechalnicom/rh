@@ -1,16 +1,13 @@
 function retorna(data){
     let dados ="<dl>";
-        console.log(data,typeof(data));
         for (const key in data) {
             if (Object.hasOwnProperty.call(data, key)) {
-                console.log(key,data[key]);
                 dados += "<dt>"+key+"</dt>"
                 dados += "<dd>-"+data[key]+"</dd>"
             }
         }
         dados += "</dl>"
         document.getElementById('main').innerHTML = dados;
-        console.log(dados);
 }
 function requisicao(url){  
     fetch(url, {
@@ -22,12 +19,12 @@ function requisicao(url){
     })
 }
 function nav_base(indice=0){
-    let nav_list = ["Home","Empresas","Funcionários","Registros","Usuário",
-        indice,'0 nav-link active text-primary','1 nav-item'];
+    let nav_list = ["Home","Empresas","Funcionários","Registros","Usuário"];
     let lista_nav = ``;
+    let classe_ativa = 'class="col-sm pt-2 m-0 nav-link active text-primary"';
+    let classe = 'class="col-sm pt-2 m-1 nav-item"';
     for (let i=0;i<5;i++){
-        lista_nav += `<li id="${nav_list[i]}" onclick="nav_base(${i})"
-        class="col-sm pt-2 m-${indice===i?nav_list[6]:nav_list[7]}">
+        lista_nav += `<li id="${nav_list[i]}" onclick="nav_base(${i})" ${indice===i?classe_ativa:classe}>
         ${nav_list[i]}</li>`;
     }
     document.getElementById('nav').innerHTML = lista_nav;
@@ -36,14 +33,12 @@ function nav_base(indice=0){
             console.log("indice=>0");
             break
         case 1:
-           console.log("indice=>1");
            requisicao("empresas");
             break
         case 2:
-            console.log("indice=>2");
+            requisicao("funcionarios");
             break
         case 3:
-           console.log("indice=>3");
            requisicao("registros");
             break
         case 4:
