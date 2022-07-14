@@ -1,4 +1,4 @@
-function registros(url){  
+function requisicao(url){  
     fetch(url, {
         method: 'get',
     }).then(function(result){
@@ -8,16 +8,9 @@ function registros(url){
         let dados ="<dl>";
         for (const key in data) {
             if (Object.hasOwnProperty.call(data, key)) {
-                const array = data[key];
-                array.forEach(registro => {
-                    for (const datas in registro) {
-                        if (Object.hasOwnProperty.call(registro, datas)) {
-                            console.log(datas,registro[datas]);
-                            dados += "<dt>"+datas+"</dt>"
-                            dados += "<dd>-"+registro[datas]+"</dd>"
-                        }
-                    }
-                });
+                console.log(key,data[key]);
+                dados += "<dt>"+key+"</dt>"
+                dados += "<dd>-"+data[key]+"</dd>"
             }
         }
         dados += "</dl>"
@@ -41,14 +34,14 @@ function nav_base(indice=0){
             break
         case 1:
            console.log("indice=>1");
-           registros("empresas");
+           requisicao("empresas");
             break
         case 2:
             console.log("indice=>2");
             break
         case 3:
            console.log("indice=>3");
-           registros("registros");
+           requisicao("registros");
             break
         case 4:
             console.log("indice=>4");

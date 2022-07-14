@@ -22,19 +22,17 @@ class IndexView(generic.ListView):
 def empresa(request):
     empresas = Empresa.objects.all()
     resposta = {}
-    respost = []
+    #resposta = dict(empresas)
     for empresa in empresas:
-        respost.append({str(empresa):str(empresa.cnpj)})
-        print (respost,type(respost))
-    resposta = {"empresa":respost}
+        resposta[empresa.nome_empresa] = empresa.cnpj
+    print (resposta,type(resposta))
     return JsonResponse(resposta)
 
 def registro(request):
     registros = RegistroPontos.objects.filter(ponto_data__lte=timezone.now()).order_by('-ponto_data')[:15]
     resposta = {}
-    respost = []
     for regis in registros:
-        respost.append({str(regis.ponto_data):str(regis.funcionario)})
-    resposta = {"registro":respost}
+        resposta[str(regis.ponto_data)] = str(regis.funcionario)
+    print (resposta,type(resposta))
 
     return JsonResponse(resposta)
