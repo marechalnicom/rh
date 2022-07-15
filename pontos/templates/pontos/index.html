@@ -1,21 +1,9 @@
 {% extends "pontos/base.html" %}
 {% load static %}
+{% block head %}
+<link href="{% static 'pontos/style.css' %}" rel="stylesheet">
+{% endblock %}
 {% block main %}
-
-{% if lista_empresas %}
-    <dl>
-        {% for empresa in lista_empresas %}
-        <dt>
-            {{ empresa.nome_empresa }}
-        </dt>
-        <dd>
-           - {{ empresa.cnpj }}
-        </dd>
-            {% endfor %}
-    </dl>
-{% else %}
-    <p>Sem empresas cadastradas</p>
-{% endif %}
     <script src="{% static 'pontos/js.js' %}"></script>
     <script>
     nav_base();
