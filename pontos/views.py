@@ -11,6 +11,14 @@ class IndexView(generic.ListView):
     context_object_name = 'lista_empresas'
 
     def get_queryset(self):
+        return
+
+class PontoView(generic.ListView):
+    template_name = 'pontos/pontos.html'
+    context_object_name = 'lista_pontos'
+
+    def get_queryset(self):
+        print (self)
         return Empresa.objects.all()
 #class RegistrosView(generic.ListView):
 #    context_object_name = 'lista_ultimos_pontos'
@@ -19,7 +27,7 @@ class IndexView(generic.ListView):
     #    return RegistroPontos.objects.filter(
     #        ponto_data__lte=timezone.now()
     #    ).order_by('-ponto_data')[:5]
-def empresa(request):
+def empresa(request):    
     empresas = Empresa.objects.all()
     resposta = {}
     for empresa in empresas:
@@ -34,6 +42,7 @@ def funcionario(request):
     return JsonResponse(resposta)
 
 def registro(request):
+    print(request)
     registros = RegistroPontos.objects.filter(ponto_data__lte=timezone.now()).order_by('-ponto_data')[:15]
     resposta = {}
     for regis in registros:
