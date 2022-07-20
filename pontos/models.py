@@ -35,7 +35,7 @@ class RegistroPontos(models.Model):
     ponto_data = models.DateTimeField('Data do Ponto',default=timezone.now())
     ativo = models.BooleanField(default=True)
     def __str__(self) -> str:
-        ponto = str(self.ponto_data)+" "+str(self.funcionario)
+        ponto = self.ponto_data.strftime("%x")+" "+self.ponto_data.strftime("%X")+" "+str(self.funcionario)
         return ponto
     @admin.display(
         boolean=True,
