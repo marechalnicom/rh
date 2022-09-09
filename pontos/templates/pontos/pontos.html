@@ -1,15 +1,15 @@
 {% if lista_pontos %}
     <dl class="row">
-        {% for empresa in lista_pontos %}
+        {% for funcionario in lista_pontos %}
         <dt class="col-sm-6">
-            {{ empresa.nome_empresa }}
+            {{ funcionario.nome_funcionario }}
         </dt>
         <dd class="col-sm-6">
-           - {{ empresa.cnpj }}
+           - {{ funcionario.empresa.nome_empresa }}
         </dd>
             {% endfor %}
     </dl>
 {% else %}
-    <p>Sem empresas cadastradas</p>
+    <p>Sem Funcionarios Encontrados</p>
 {% endif %}
 

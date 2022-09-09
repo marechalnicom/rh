@@ -19,7 +19,7 @@ class PontoView(generic.ListView):
 
     def get_queryset(self):
         print (self)
-        return Empresa.objects.all()
+        return Funcionario.objects.all()
 #class RegistrosView(generic.ListView):
 #    context_object_name = 'lista_ultimos_pontos'
 #
